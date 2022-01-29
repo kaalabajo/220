@@ -1,13 +1,12 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Name: Kaala Bajo
+hw2.py
 
-Problem: <Brief, one or two sentence description of the problem that this program solves, in your own words.>
+Problem: This program uses arithmatic and the math import
+to solve a series of mathematical problems.
 
-Certification of Authenticity:
-<include one of the following>
+Certification of Authenticity
 I certify that this assignment is entirely my own work.
-I certify that this assignment is my own work, but I discussed it with: <Name(s)>
 """
 import math
 
@@ -30,20 +29,30 @@ def multiplication_table():
 
 
 def triangle_area():
-    a = eval(input("What is the length of side 1? "))
-    b = eval(input("Next, what is the length of side 2? "))
-    c = eval(input("Finally, what is the length of side 3? "))
-    s = ((a + b + c)/2)
-    area_not_squared = (s*(s-a)*(s-b)*(s-c))
-    area = math.sqrt(area_not_squared)
+    side_a = eval(input("What is the length of side a? "))
+    side_b = eval(input("Next, what is the length of side b? "))
+    side_c = eval(input("Finally, what is the length of side c? "))
+    sum_div = ((side_a + side_b + side_c)/2)
+    area_squared = (sum_div*(sum_div-side_a)*(sum_div-side_b)*(sum_div-side_c))
+    area = math.sqrt(area_squared)
     print("area is", area)
-triangle_area()
-def sum_squares():
-    pass
+#triangle_area()
 
+def sum_squares():
+    lower = eval(input("Enter lower range: "))
+    upper = eval(input("Enter upper range: "))
+    sum_squares_acc = 0
+    for i in range(lower, upper + 1, 1):
+        sum_squares_acc = sum_squares_acc + (i*i)
+    print(sum_squares_acc)
 
 def power():
-    pass
+    base = eval(input("Enter base: "))
+    exponent = eval(input("Enter exponent: "))
+    power_acc = 1
+    for i in range(exponent):
+        power_acc = power_acc * base
+    print(base, "^", exponent, "=", power_acc)
 
 
 if __name__ == '__main__':
