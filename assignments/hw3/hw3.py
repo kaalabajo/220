@@ -12,13 +12,20 @@ I certify that this assignment is my own work, but I discussed it with: <Name(s)
 
 
 def average():
-    pass
-
+    grades = eval(input("How many grades will you enter?"))
+    grade_acc = 0
+    for i in range(grades):
+        grade_acc = grade_acc + (eval(input("Enter grade: ")))
+    avg_grade = grade_acc/grades
+    print("Average is", avg_grade)
+#average()
 
 def tip_jar():
-    pass
-
-
+    tip = 0
+    for i in range(5):
+        tip = tip + (eval(input("How much would you like to donate? ")))
+    print("total tips: ", tip)
+tip_jar()
 def newton():
     pass
 
