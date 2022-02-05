@@ -24,5 +24,4 @@ def traffic():
         print("Road", roads + 1, "averaged", road_acc/roadx_days, "vehicles per day \n")
 
     print("Total number of vehicles traveled on all roads:", vehicle_total)
-    print("Average number of vehicles per road:", round((vehicle_total/road_num), 2) )
-traffic()
+    print("Average number of vehicles per road:", round((vehicle_total/road_num), 2))
