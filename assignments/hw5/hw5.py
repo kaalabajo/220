@@ -12,24 +12,30 @@ I certify that this assignment is my own work, but I discussed it with: <Name(s)
 
 
 def name_reverse():
-    pass
-
+    name = input('enter a name (first last): ')
+    listed = name.split()
+    reverse_list = listed[1] + ", " + listed[0]
+    print(reverse_list)
 
 def company_name():
-    pass
-
+    domain = input('enter the domain: ')
+    no_periods = domain.split(".")
+    print(no_periods[1])
 
 def initials():
-    pass
+    stud_num = eval(input('how many students are in the class: '))
 
+    for i in range(stud_num):
+        text = 'what is the name of student ' + str(i+1) + "? "
+        name = input(text)
+        name_split = name.split(" ")
+        print(name_split[0][0] + name_split[1][0])
 
 def names():
     pass
 
-
 def thirds():
     pass
-
 
 def word_average():
     pass
