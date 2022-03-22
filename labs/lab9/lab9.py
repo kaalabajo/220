@@ -1,11 +1,14 @@
 """
-Name: <your name goes here – first and last>
-<ProgramName>.py
+Kaala Bajo
+lab9.py
+
+
 """
 
 
 def build_board():
-    pass
+    the_list = [1,2,3,4,5,6,7,8,9]
+    return the_list
 
 
 def print_board(board):
@@ -37,31 +40,155 @@ def print_board(board):
 
 
 def is_legal(board, position):
-    pass
+    return str(board[position-1]).isnumeric()
 
 
 def fill_spot(board, position, character):
-    pass
+    safe_character = character.strip().lower
+    board[position-1] = character
 
+def game_is_won(board):
+    """lol im sorry this is gross. i wanted to ask if i could simplify it but i couldnt get a hold of anyone
+    to ask for help before i had to go"""
+    if (board[0] == "x") and (board[1] == "x") and (board[2] == "x"):
+        return True
+    elif (board[0] == "o") and (board[1] == "o") and (board[2] == "o"):
+        return True
 
-def winning_game(board):
-    pass
+    elif (board[3] == "x") and (board[4] == "x") and (board[5] == "x"):
+        return True
+    elif (board[3] == "o") and (board[4] == "o") and (board[5] == "o"):
+        return True
 
+    elif (board[6] == "x") and (board[7] == "x") and (board[8] == "x"):
+        return True
+    elif (board[6] == "o") and (board[7] == "o") and (board[8] == "o"):
+        return True
+
+    elif (board[0] == "x") and (board[3] == "x") and (board[6] == "x"):
+        return True
+    elif (board[0] == "o") and (board[3] == "o") and (board[6] == "o"):
+        return True
+
+    elif (board[1] == "x") and (board[4] == "x") and (board[7] == "x"):
+        return True
+    elif (board[1] == "o") and (board[4] == "o") and (board[7] == "o"):
+        return True
+
+    elif (board[2] == "x") and (board[5] == "x") and (board[8] == "x"):
+        return True
+    elif (board[2] == "o") and (board[5] == "o") and (board[8] == "o"):
+        return True
+
+    elif (board[0] == "x") and (board[4] == "x") and (board[8] == "x"):
+        return True
+    elif (board[0] == "o") and (board[4] == "o") and (board[8] == "o"):
+        return True
+
+    elif (board[2] == "x") and (board[4] == "x") and (board[6] == "x"):
+        return True
+    elif (board[2] == "o") and (board[4] == "o") and (board[6] == "o"):
+        return True
+
+    else:
+        return False
 
 def game_over(board):
-    pass
+    a_bool_acc = 0
+    for i in board:
+        if str(i).isnumeric() == False: #if a element in the list is not a number add 1
+            a_bool_acc += 1
+
+    if game_is_won(board) == True:
+        return True
+    elif a_bool_acc == 9:
+        return True
+    else:
+        return False
+
 
 
 def get_winner(board):
-    pass
+    """i was also gonna ask if there was a better way at this point but i
+    gave up at some point"""
+    if (board[0] == "x") and (board[1] == "x") and (board[2] == "x"):
+        return "x"
+    elif (board[0] == "o") and (board[1] == "o") and (board[2] == "o"):
+        return "o"
+
+    elif (board[3] == "x") and (board[4] == "x") and (board[5] == "x"):
+        return "x"
+    elif (board[3] == "o") and (board[4] == "o") and (board[5] == "o"):
+        return "o"
+
+    elif (board[6] == "x") and (board[7] == "x") and (board[8] == "x"):
+        return 'x'
+    elif (board[6] == "o") and (board[7] == "o") and (board[8] == "o"):
+        return 'o'
+
+    elif (board[0] == "x") and (board[3] == "x") and (board[6] == "x"):
+        return 'x'
+    elif (board[0] == "o") and (board[3] == "o") and (board[6] == "o"):
+        return "o"
+
+    elif (board[1] == "x") and (board[4] == "x") and (board[7] == "x"):
+        return 'x'
+    elif (board[1] == "o") and (board[4] == "o") and (board[7] == "o"):
+        return "o"
+
+    elif (board[2] == "x") and (board[5] == "x") and (board[8] == "x"):
+        return 'x'
+    elif (board[2] == "o") and (board[5] == "o") and (board[8] == "o"):
+        return "o"
+
+    elif (board[0] == "x") and (board[4] == "x") and (board[8] == "x"):
+        return 'x'
+    elif (board[0] == "o") and (board[4] == "o") and (board[8] == "o"):
+        return 'o'
+
+    elif (board[2] == "x") and (board[4] == "x") and (board[6] == "x"):
+        return 'x'
+    elif (board[2] == "o") and (board[4] == "o") and (board[6] == "o"):
+        return 'o'
+
+    else:
+        return None
 
 
 def play(board):
-    pass
+    restart = 0
+    play_again = 'y'
+    #eval(input("Play again? "))
+    while play_again[0] == "y" or play_again[0] == "Y": #TEMPORARY for testing
+        board = build_board()
+        print_board(board)
+        while not game_is_won(board):
+            x_move = eval(input("X's, choose a position: "))
+            if is_legal(board, x_move) == False:
+                x_move = eval(input("Not valid. Pick an unselected position: "))
+            fill_spot(board, x_move, "x")
+            print_board(board)
+            if game_over(board):
+                break
+
+
+            o_move = eval(input("O's, choose a position: "))
+            if is_legal(board, o_move) == False:
+                o_move = eval(input("Not valid. Pick an unselected position: "))
+            fill_spot(board, o_move, "o")
+            print_board(board)
+            if game_over(board):
+                break
+
+        if game_over(board) == True and get_winner(board) != None:
+            print("{}'s win!".format(get_winner(board)))
+        else:
+            print("Tie!")
+        play_again = input("Play again? ")
 
 
 def main():
-    pass
+    play(build_board())
 
 
 if __name__ == '__main__':
