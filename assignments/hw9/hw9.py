@@ -6,14 +6,14 @@ Problem: Plays 2 versions of hangman
 Certification of Authenticity:
 I certify that this assignment is entirely my own work."""
 from random import randint
-from graphics import *
+from graphics import GraphWin,Line,Circle,Entry,Text,Point
 
 def get_words(file_name):
     in_f = open(file_name, "r")
     words = []
-    for i in (in_f.readlines()):
+    for i in in_f.readlines():
         words.append(i)
-    return(words)
+    return words
 
 def get_random_word(words):
     for i in range(len(words)):
@@ -40,7 +40,7 @@ def make_hidden_secret(secret_word, guesses):
             if j == secret_word[i]:
                 underscored[i] = secret_word[i]
     worded = " ".join(underscored)
-    return(worded)
+    return worded
 
 
 def won(guessed):
@@ -63,10 +63,10 @@ def play_graphics(secret_word):
     leg_1 = Line(Point(800,350),Point(750,415))
     leg_2 = Line(Point(800,350), Point(850,415))
     body_parts = [leg_2,leg_1,arm_2,arm_1,chest,head]
-    gallow_1 = Line(Point(950,50),Point(950,450)).draw(win)
-    gallow_2 = Line(Point(950,50),Point(800,50)).draw(win)
-    gallow_3 = Line(Point(800,50),Point(800,100)).draw(win)
-    gallow_4 = Line(Point(970,450),Point(800,450)).draw(win)
+    Line(Point(950,50),Point(950,450)).draw(win)
+    Line(Point(950,50),Point(800,50)).draw(win)
+    Line(Point(800,50),Point(800,100)).draw(win)
+    Line(Point(970,450),Point(800,450)).draw(win)
 
     intro = "h a n g m a n   b u t   a e s t h e t i c"
     header = Text(Point(500,30), intro)
@@ -92,7 +92,7 @@ def play_graphics(secret_word):
             printed_guesses += player_guess
             guesses.append(player_guess)
         if not letter_in_secret_word(player_guess,secret_word):
-            remaining = remaining-1
+            remaining -= 1
             body_parts[remaining].draw(win)
             body_acc += 1
 
@@ -117,6 +117,8 @@ def play_graphics(secret_word):
             loser.setFill('red')
             loser.draw(win)
             break
+
+
         #display letters guessed
         guessed = Text(Point(500, 150), printed_guesses)
         guessed.draw(win)
@@ -153,9 +155,7 @@ def play_command_line(secret_word):
         else:
             print('(you already guessed that)\n')
 
-        if letter_in_secret_word(player_guess,secret_word):
-            pass
-        else:
+        if not letter_in_secret_word(player_guess,secret_word) and not already_guessed(player_guess,guesses):
             remaining -= 1
 
         if remaining == 0:
