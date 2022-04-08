@@ -50,7 +50,7 @@ def syracuse(num):
 def is_prime(number):
     #to use in my next one, takes a number and returns True if prime
     i = 2 #fake for loop acc
-    end = number/2 #div by two bc if the num can be /2 it aint prime
+    end = number/2 #div by two bc repetitive + cut out evens
     while i < end:
         if number%i == 0:
             return False
