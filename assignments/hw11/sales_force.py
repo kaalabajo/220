@@ -61,3 +61,11 @@ class SalesForce:
             new_id = all_info[i][0]
             new_person = all_info[i][1]
             sales_ppl_list.append(SalesPerson(new_id,new_person))
+
+        for i in sales_ppl_list:
+            if i.get_id() == employee_id:
+                return i
+        return None
+
+    def get_sale_frequencies(self):
+        pass
