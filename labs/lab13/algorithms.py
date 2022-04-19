@@ -7,6 +7,7 @@ Problem: Adds read data to a list and does a linear search
 Certification of Authenticity:
 I certify that this assignment is entirely my own work.
 """
+
 #ps, i did not talk to anyone but i did consult the book
 
 from graphics import Rectangle, Point

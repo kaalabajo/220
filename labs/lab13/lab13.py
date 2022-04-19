@@ -27,5 +27,6 @@ def trade_alert(filename):
 
     in_f.close()
 
+
 def main():
     trade_alert("trades.txt")
